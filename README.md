@@ -54,6 +54,7 @@ Once the installation and configuration are complete, you can run the applicatio
 streamlit run app.py
 
 This will start the Streamlit server and the application should automatically open in your web browser.
+
 🔮 Future Improvements
  * [ ] User accounts to save history across different sessions.
  * [ ] Database integration (e.g., SQLite, Firebase) for persistent storage.
