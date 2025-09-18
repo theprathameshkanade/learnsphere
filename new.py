@@ -4,21 +4,21 @@ from dotenv import load_dotenv
 import os
 import re
 
-# --- Page Configuration ---
+
 st.set_page_config(
     page_title="LearnSphere",
     page_icon="🎓",
     layout="wide"
 )
 
-# --- Load Environment Variables and API Key ---
+
 load_dotenv()
 API_KEY = os.getenv("GEMINI_API_KEY")
 genai.configure(api_key=API_KEY)
 model = genai.GenerativeModel('gemini-2.0-flash-exp')
 
 
-# --- Custom CSS for Enhanced UI ---
+
 st.markdown("""
 <style>
     /* --- General App Styling --- */
@@ -97,7 +97,7 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 
-# --- Backend Functions (Functionality Unchanged) ---
+
 def get_response(prompt, difficulty="intermediate"):
     difficulty_prompts = {
         "beginner": "Explain this in simple terms for a beginner: ",
@@ -117,12 +117,9 @@ def save_to_history(question, answer):
         st.session_state.history = []
     st.session_state.history.append({"question": question, "answer": answer})
 
-# --- UI Layout ---
 
-# Header Section
 st.markdown('<div class="gradient-header"><h1>🎓 LearnSphere: Your AI Study Partner</h1></div>', unsafe_allow_html=True)
 
-# Sidebar for Settings
 with st.sidebar:
     st.header("⚙️ Settings")
     difficulty = st.select_slider(
@@ -135,10 +132,8 @@ with st.sidebar:
     st.info("Welcome to CogniQuest! Select a tab to start your learning journey.")
 
 
-# Main Content with Tabs
 tab1, tab2, tab3, tab4 = st.tabs(["📚 Learn", "🧩 Quiz", "📝 Summarize", "📈 History"])
 
-# Learn Tab
 with tab1:
     st.header("🧠 Learn Something New")
     user_prompt = st.text_area("What would you like to learn about?", key="learn_prompt", height=150, placeholder="e.g., Explain the theory of relativity")
@@ -153,12 +148,10 @@ with tab1:
         else:
             st.warning("Please enter a topic to learn about.")
 
-# Quiz Tab
 with tab2:
     st.header("🧩 Test Your Knowledge")
     quiz_topic = st.text_input("Enter a topic for a quick quiz:", key="quiz_topic", placeholder="e.g., The Solar System")
 
-    # Initialize session state for quiz
     if 'quiz_data' not in st.session_state:
         st.session_state.quiz_data = []
         st.session_state.quiz_answers = {}
@@ -243,7 +236,6 @@ Ensure each question, option, and answer is on a new line. Do not include explan
                         "results": result_summary
                     })
 
-# Summarize Tab
 with tab3:
     st.header("📝 Summarize Your Notes")
     text_to_summarize = st.text_area("Paste the text you want to summarize:", key="summarize_input", height=200, placeholder="Paste your article, notes, or any text here...")
@@ -264,7 +256,6 @@ with tab3:
         else:
             st.warning("Please paste some text to summarize.")
 
-# History Tab
 with tab4:
     st.header("📈 Review Your History")
 
@@ -275,7 +266,6 @@ with tab4:
         st.success("History cleared successfully!")
         st.rerun()
 
-    # Learning History
     if 'history' in st.session_state and st.session_state.history:
         st.subheader("🧠 Learn History")
         for i, item in enumerate(reversed(st.session_state.history)):
@@ -288,7 +278,6 @@ with tab4:
                 </div>
                 """, unsafe_allow_html=True)
 
-    # Summarization History
     if 'summarize_history' in st.session_state and st.session_state.summarize_history:
         st.subheader("📝 Summarization History")
         for i, item in enumerate(reversed(st.session_state.summarize_history)):
@@ -301,7 +290,6 @@ with tab4:
                 </div>
                 """, unsafe_allow_html=True)
 
-    # Quiz History
     if 'quiz_history' in st.session_state and st.session_state.quiz_history:
         st.subheader("🧩 Quiz History")
         for i, qh in enumerate(reversed(st.session_state.quiz_history)):
