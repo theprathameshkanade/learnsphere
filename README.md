@@ -4,7 +4,7 @@ LearnSphere is an interactive, AI-powered web application built with Streamlit a
 
 ✨ Features
  * 📚 Learn: Get dynamic explanations on any topic, tailored to your chosen difficulty level.
- * 🧩 Quiz: Instantly generate 5-question multiple-choice quizzes to test your knowledge on any subject.
+ * 🧩 Quiz: Instantly generate 10-question multiple-choice quizzes to test your knowledge on any subject.
  * 📝 Summarize: Paste long articles, notes, or text and receive a concise, AI-generated summary.
  * 📈 History: Your learning sessions, quiz results, and summaries are saved for the duration of your session, allowing you to review your progress.
  * ⚙️ Adjustable Difficulty: A unique slider allows you to switch between Beginner, Intermediate, and Advanced modes, changing the depth and complexity of the AI's responses.
