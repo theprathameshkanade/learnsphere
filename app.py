@@ -129,7 +129,7 @@ with st.sidebar:
         key="difficulty_slider"
     )
     st.markdown("---")
-    st.info("Welcome to CogniQuest! Select a tab to start your learning journey.")
+    st.info("Welcome to LearnSphere! Select a tab to start your learning journey.")
 
 
 tab1, tab2, tab3, tab4 = st.tabs(["📚 Learn", "🧩 Quiz", "📝 Summarize", "📈 History"])
